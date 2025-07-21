@@ -1,6 +1,8 @@
 # ShiftSwap - Backend 🚀
 
-![ShiftSwap Logo](https://github.com/Saurabh1590/shift-swap-backend/blob/main/assets/ShiftSwapLogo.png?raw=true)
+<p align="center">
+  <img src="https://github.com/Saurabh1590/shift-swap-backend/blob/main/assets/ShiftSwapLogo.png?raw=true" alt="ShiftSwap Logo" width="200"/>
+</p>
 
 This repository contains the backend server for the ShiftSwap application, a modern employee shift management system. It's built with Node.js, Express, and MongoDB and features a robust REST API to handle all application logic.
 
