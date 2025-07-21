@@ -1,6 +1,6 @@
 # ShiftSwap - Backend 🚀
 
-<p align="center">
+<p align="start">
   <img src="https://github.com/Saurabh1590/shift-swap-backend/blob/main/assets/ShiftSwapLogo.png?raw=true" alt="ShiftSwap Logo" width="200"/>
 </p>
 
