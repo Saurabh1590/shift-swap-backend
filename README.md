@@ -1,6 +1,6 @@
 # ShiftSwap - Backend 🚀
 
-![ShiftSwap Logo](https://raw.githubusercontent.com/user-attachments/assets/d1f9a1b1-2e1d-4d80-b96e-a841a4a49c6b)
+![ShiftSwap Logo](https://github.com/Saurabh1590/shift-swap-backend/blob/main/assets/ShiftSwapLogo.png?raw=true)
 
 This repository contains the backend server for the ShiftSwap application, a modern employee shift management system. It's built with Node.js, Express, and MongoDB and features a robust REST API to handle all application logic.
 
@@ -36,18 +36,21 @@ This repository contains the backend server for the ShiftSwap application, a mod
 ### Installation & Setup
 
 1.  **Clone the repository:**
+
     ```bash
     git clone [https://github.com/your-username/shift-swap-backend.git](https://github.com/your-username/shift-swap-backend.git)
     cd shift-swap-backend
     ```
 
 2.  **Install dependencies:**
+
     ```bash
     npm install
     ```
 
 3.  **Set up environment variables:**
     Create a `.env` file in the root of the project and add the following variables:
+
     ```env
     PORT=5000
     DATABASE_URL=your_mongodb_connection_string
@@ -80,6 +83,7 @@ A brief overview of the main API routes:
 - `POST /api/swap/:id/accept`: Accept an open swap request.
 
 **Admin Only:**
+
 - `GET /api/admin/summary`: Get dashboard statistics.
 - `GET /api/admin/users`: Get a list of all users.
 - `PUT /api/leave/:id/:status`: Approve or reject a leave request.
