@@ -17,6 +17,8 @@ connectDB();
 
 app.use(express.json());
 app.use(cookieParser());
+
+// 🔥 CORS Setup (FULLY CORRECT)
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
@@ -37,7 +39,9 @@ app.use(
   })
 );
 
-app.use(cors(corsOptions));
+// ❌ REMOVE THIS (it was breaking your backend)
+// app.use(cors(corsOptions));
+
 app.use("/api/user", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/auth", authRoutes);
