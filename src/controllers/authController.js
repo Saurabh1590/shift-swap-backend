@@ -2,26 +2,26 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const asyncHandler = require("../utils/asyncHandler");
-const { generateScheduleForUser } = require('../utils/shiftScheduler');
+const { generateScheduleForUser } = require("../utils/shiftScheduler");
 
 exports.register = asyncHandler(async (req, res, next) => {
   const user = new User(req.body);
 
-  if (user.role === 'employee') {
+  if (user.role === "employee") {
     // 1. Assign a random weekly day off (0-6 for Sun-Sat)
-    user.weeklyOffDay = Math.floor(Math.random() * 7); 
+    user.weeklyOffDay = Math.floor(Math.random() * 7);
     // 2. Set the initial shift cycle to 'A' (Morning)
-    user.shiftCycle = 'A';
+    user.shiftCycle = "A";
   }
 
   await user.save();
 
-  if (user.role === 'employee') {
+  if (user.role === "employee") {
     await generateScheduleForUser({
       userId: user._id,
       startDate: new Date(),
       weeklyOffDay: user.weeklyOffDay,
-      initialShiftType: user.shiftCycle
+      initialShiftType: user.shiftCycle,
     });
   }
 
@@ -46,8 +46,9 @@ exports.login = asyncHandler(async (req, res, next) => {
 
   res.cookie("token", token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
+    path: "/",
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
 

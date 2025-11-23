@@ -9,7 +9,7 @@ const leaveRoutes = require("./routes/leaveRoutes");
 const swapRoutes = require("./routes/swapRoutes");
 const userRoutes = require("./routes/userRoutes");
 const shiftRoutes = require("./routes/shiftRoutes");
-const errorMiddleware = require("./middleware/errorMiddleware"); 
+const errorMiddleware = require("./middleware/errorMiddleware");
 
 const app = express();
 dotenv.config();
@@ -17,12 +17,25 @@ connectDB();
 
 app.use(express.json());
 app.use(cookieParser());
-const corsOptions = {
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://shift-swap-frontend.onrender.com", // your real frontend
+];
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        console.log("❌ CORS blocked:", origin);
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.use(cors(corsOptions));
 app.use("/api/user", userRoutes);

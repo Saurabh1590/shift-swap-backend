@@ -9,10 +9,12 @@ router.post("/login", login);
 router.get("/me", getMe); 
 
 router.post("/logout", (req, res) => {
-  res.clearCookie("token", {
+  res.cookie("token", "", {
     httpOnly: true,
-    sameSite: "strict",
-    secure: process.env.NODE_ENV === "production",
+    secure: true,
+    sameSite: "none",
+    path: "/",          // IMPORTANT
+    expires: new Date(0),
   });
   res.status(200).json({ message: "Logged out successfully" });
 });
